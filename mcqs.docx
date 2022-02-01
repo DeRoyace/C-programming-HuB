@@ -1,0 +1,284 @@
+[9:08 pm, 16/11/2021] Snahasis Sir: 
+Which of the following operator(s) cannot be overloaded?
+. (Member Access or Dot operator)
+?: (Ternary or Conditional Operator )
+:: (Scope Resolution Operator)
+Ans All of the above
+Ans: 
+
+Which of the following cannot be passed to a function in C++?
+Constant
+Structure
+Array
+Header file : ans
+Ans: 
+
+Which of the following storage classes have global visibility in C++?
+Register
+Static
+Auto
+Extern
+Ans: extern
+
+When a method in a subclass has the same name and type signatures as a method in the superclass, then the method in the subclass __________ the method in the super class.
+Overloads
+Friendships
+Inherits
+Overrides
+Ans: Overrides
+
+Which of the following is not a member of class?
+Static function
+Friend function
+Const function
+Virtual function
+Ans: virtual 
+
+C++ can be said to be as C language with
+Structures
+Functions
+Classes
+Global data
+Ans: classes
+
+____ allows to create classes which are derived from other classes, so that they automatically include some of its "parent's" members, plus its own members.
+Overloading
+Inheritance
+Polymorphism
+Encapsulation
+Ans: Inheritance
+
+Important advantage of using new and delete operators in C++ is
+Allocation of memory
+Frees the memory previously allocated
+Allocation of memory and frees the memory previously allocated
+Initialization of memory easily
+Ans: option C
+
+C++ actually supports the following two complete dynamic systems?
+One defined by C++ and the other not defined by C
+One defined by C and one specific to C++
+Both are specific to C++
+Both of them are improvements of C
+Ans: 2
+
+Which of the following correctly describes overloading of functions?
+Virtual polymorphism x
+Transient polymorphism
+Ad-hoc polymorphism
+Pseudo polymorphism
+Ans: Ad-hoc
+
+Which of the following concepts means adding new concepts to a program as it runs?
+Data hiding
+Dynamic loading
+Dynamic typing
+Dynamic binding
+Ans: dynamic loading
+
+Which of the following operators can not be overloaded in C+ +?
+*
+==
++=
+:: - scope Resolution : Ans]
+Ans: 
+
+What is a size of empty class in c++?
+4 bytes
+2 bytes
+0 bytes
+1 bytes
+Ans: 1 bytes
+
+In c++ object of the class is also called?
+Constants
+Tag
+Instance
+Data collection
+Ans: Instance
+
+----------------------------------------------------------------------------------------------------------------------
+
+In object oriented programming, by wrapping up characteristics and behavior into one unit, we achieve
+Data Abstraction
+Data Encapsulation <--Ans
+Data Hiding
+All of these
+
+Which of the following mode declaration is used in C++ to open a file for input?
+ios :: app
+in :: ios
+ios :: in <--Ans
+ios :: file 
+
+
+Which diagram provides a formal graphic notation for modelling objects, classes and their relationships to one another?
+Object Diagram
+Analysis Diagram
+Instance Diagram
+Class Diagram <-- Ans
+
+The mechanism that binds code and data together and keeps them secure from outside world is known as
+Abstraction
+Encapsulation <--Ans
+Inheritance
+Polymorphism
+
+
+A Class can have how many destructor? destroys objects
+1 <-- Ans
+2
+3
+4
+
+The parameter list in function overloading must differ by?
+Number of functions
+Function Size
+Function Name 
+Number of argument <--Ans
+
+Data members is also called?
+Attribute <-- ans
+Method
+Class
+Object
+
+In how many ways is polymorphism achived in C++?
+2
+3 <--Ans
+1
+4
+
+What will be the output of the following C++ code?
+    #include <iostream.h>
+    int main()
+    {
+        char c = 74;
+        cout << c;
+        return 0;
+    }
+a) I
+b) J <-- Ans
+c) A
+d) N
+
+What will be the output of the following C++ program?
+    #include <iomanip.h>
+    #include <iostream.h>
+    int main()
+    {
+        cout << setprecision(17);
+        double d = 0.1;
+        cout << d << endl;
+        return 0;
+    }
+a) compile time error
+b) 0.100001
+c) 0.11
+d) 0.10000000000000001 <--Ans
+
+What will be the output of the following C++ code?
+#include <iostream.h>
+    int main()
+    {
+        int a = 5;
+        float b;
+        cout << sizeof(++a + b);
+        cout << a;
+        return 0;
+    }
+a) 2 5
+b) 4 5
+c) 4 6 <--Ans
+d) 2 6
+
+-----------------------------------------------------------------------------------------------------------------
+
+What will be the output of the following C++ code?
+#include <iostream.h>
+void square (int *x, int *y)
+{
+	*x = (*x) * --(*y);
+}
+int main ( )
+{
+	int number = 30;
+	square(&number, &number);
+	cout << number;
+	return 0;
+}
+a) 30 
+b) Error
+c) Segmentation fault
+d) 870 <--Ans
+
+ What will be the output of the following C++ program?
+
+#include <iostream.h>
+int main()
+{
+    try
+    {
+        try
+        {
+            throw 20;
+        }
+        catch (int n)
+        {
+            cout << "Inner Catch\n";
+            throw;
+        }
+    }
+    catch (int x)
+    {
+        cout << "Outer Catch\n";
+    }
+    return 0;
+}
+a) Outer Catch
+b) 
+Inner Catch
+Outer Catch  <-- Ans
+c) Error
+d) Inner Catch 
+
+What will be the output of the following C++ code snippet?
+
+    #include <iostream.h>
+    int operate (int a, int b)
+    {
+        return (a * b);
+    }
+    float operate (float a, float b)
+    {
+        return (a / b);
+    }
+    int main()
+    {
+        int x = 5, y = 2;
+        float n = 5.0, m = 2.0;
+        cout << operate(x, y) <<"\t";
+        cout << operate (n, m);
+        return 0;
+    }
+a) 10.0 5
+b) 10 2.5   <--Ans
+c) 10.0 5.0
+d) 5.0 2.5
+
+What will be the output of the following C++ code?
+
+    #include <iostream.h>
+    int main ()
+    {
+        int a, b, c;
+        a = 2;
+        b = 7;
+        c = (a > b) ? a : b;
+        cout << c;
+        return 0;
+    }
+a) 12
+b) 14
+c) 6
+d) 7 <-- Ans
