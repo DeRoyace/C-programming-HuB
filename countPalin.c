@@ -3,13 +3,14 @@
 
 int isPalin(char str[])
 {
-    int i, flag = 0, j = 0, len = strlen(str);
+    int i, j = 0, len = strlen(str);
     char rev[len];
     for (i = len - 1; i >= 0; i--)
     {
         rev[j] = str[i];
         j++;
     }
+    // printf("%d", strncmp(str, rev, len) );
     return (strncmp(str, rev, len) == 0);
 }
 
