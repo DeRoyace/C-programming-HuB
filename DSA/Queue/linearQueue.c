@@ -1,10 +1,12 @@
+// Implemetation of Linear Queue using Arrays.
+
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 7
 
 int arr[SIZE], front = -1, rear = -1;
 
-void choice()
+void choice() // menu driven choice function to perform queue operations via user choice inputs
 {
     int ch, val;
     void insert(int);
@@ -13,7 +15,8 @@ void choice()
     printf("\n1: Insert elements");
     printf("\n2: Delete elements");
     printf("\n3: Display elements");
-    printf("\n4: Exit");
+    printf("\n4: Clear queue");
+    printf("\n5: Exit");
     printf("\nEnter your choice: ");
     scanf("%d", &ch);
     switch (ch)
@@ -33,15 +36,20 @@ void choice()
         break;
 
     case 4:
+        front = rear = -1;
+        printf("\nYour queue is clear now!");
+        break;
+
+    case 5:
         exit(0);
         break;
 
     default:
         printf("\nInvalid choice entered.");
     }
-}
+} // end of choice()
 
-void insert(int e)
+void insert(int e) // function to insert queue elements
 {
     if (rear == SIZE - 1)
     {
@@ -53,7 +61,7 @@ void insert(int e)
     arr[++rear] = e;
 }
 
-void delete()
+void delete() // function to delete queue elements from front end
 {
     int e;
     if (front == rear)
@@ -64,10 +72,11 @@ void delete()
     }
     e = arr[front++];
     printf("\n%d is removed from the Queue", e);
-}
+} // end of delete()
 
-void display()
+void display() // displays queue elements
 {
+    // actually this function displays elements between front and rear index.
     int i;
     if (front == rear && front == -1)
     {
@@ -80,7 +89,7 @@ void display()
         printf("%d  ", arr[i]);
     }
     printf("\n");
-}
+} // end of display()
 
 int main()
 {
@@ -89,4 +98,4 @@ int main()
         choice();
         printf("\n----------------------------------------------------");
     }
-}
+} // end of main()
