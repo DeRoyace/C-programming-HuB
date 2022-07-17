@@ -1,3 +1,4 @@
+// Implementation of Circular Queue.
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 7
@@ -37,7 +38,7 @@ void choice() // menu driven choice function to perform queue operations via use
 
     case 4:
         front = rear = -1;
-        printf("\nQueue is clear now!");
+        printf("\nYour Circular Queue is clear now!");
         break;
 
     case 5:
@@ -65,7 +66,7 @@ int isEmpty() // function to check whether the queue is empty or not
     return 0;
 }
 
-void insert(int e) // function o insert queue elements
+void insert(int e) // function to insert queue elements
 {
     if (isFull())
     {
