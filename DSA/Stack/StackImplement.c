@@ -4,7 +4,7 @@
 
 int stack[SIZE], top = -1;
 
-void push(int e)
+void push(int e) // pushing or inserting elements into stack
 {
 	if(top == SIZE-1)
 	{
@@ -14,7 +14,7 @@ void push(int e)
 	stack[++top] = e;
 }
 
-void pop()
+void pop() // poping / deleting stack elements from top
 {
 	if(top == -1)
 	{
@@ -24,7 +24,7 @@ void pop()
 	printf("\nPoped element is %d", stack[top--]);
 }
 
-void peep()
+void peep() // shows the topmost element present in the stack
 {
 	if(top == -1)
 	{
@@ -34,7 +34,7 @@ void peep()
 	printf("\nTopmost element is %d",stack[top]);
 }
 
-void display()
+void display() // displays stack elements
 {
 	int i;
 	if(top == -1)
@@ -47,9 +47,9 @@ void display()
 	{
 		printf("\n%d", stack[i]);
 	}
-}
+} // end of display
 
-void choice()
+void choice() // menu driven function for stack operations
 {
 	int ch, val;
 	printf("\n1: PUSH Elements");
@@ -98,8 +98,9 @@ int main()
 {
 	while(1)
 	{
+		// this loop runs until user terminates the program by entering choice 6
 		choice();
 		printf("\n---------------------------------------------");
 	}
 
-}
+} // end of main()
