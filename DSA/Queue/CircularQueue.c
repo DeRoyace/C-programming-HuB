@@ -61,7 +61,7 @@ int isFull() // function to check whether queue is full or not
 
 int isEmpty() // function to check whether the queue is empty or not
 {
-    if (front == rear == -1)
+    if (front == -1)
         return 1; // implies queue is empty
     return 0;
 }
@@ -108,24 +108,11 @@ void display() // displays queue elements
         return;
     }
     printf("\nQueue elements are: ");
-    if (front <= rear)
+    for (i = front; i != rear; i = (i + 1) % SIZE )
     {
-        for (i = front; i <= rear; i++)
-        {
-            printf("%d  ", arr[i]);
-        }
+        printf("%d  ", arr[i]);
     }
-    else
-    {
-        for (i = front; i < SIZE; i++)
-        {
-            printf("%d  ", arr[i]);
-        }
-        for (i = 0; i <= rear; i++)
-        {
-            printf("%d  ", arr[i]);
-        }
-    }
+	printf("%d", arr[rear]);
 } // end of display()
 
 int main()
