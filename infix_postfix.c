@@ -15,8 +15,10 @@ void pop() // poping out operators from stack and pushing into postfix expressio
 	char op;
 	if(top == -1)
 		return;
-	op = stack[top--];
-	if(op != '(' )
+	op = stack[top];
+	stack[top] = '\0';
+	top--;
+	if(op != '(' && op != '\0')
 		postfix[++k] = op;
 }
 
@@ -50,22 +52,23 @@ void scan() // scanning expression and putting into stack and postfix[] as when 
 		while(top > 0 && precedence(stack[top-1], stack[top]) == 1)
 		{
 			temp = stack[top];
-			stack[top--] = '\0';
+			stack[top] = stack[top-1];
+			stack[top-1] = temp;
 			pop();
-			stack[++top] = temp;
 		}
 
 		ch = infix[i];
 		if(ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%' || ch == '(' || ch == ')' )
 		{
-			if(ch == '(') 
-				flag = 1;
+			if( ch == '(' ) 
+				flag++;
 
-			if( top != -1 && ch == ')' && flag )
+			if( top != -1 && ch == ')' && flag != 0 )
 			{
-				while(top > -1 && stack[top] != '(' )
+				while( stack[top] != '(' )
 					pop();
-				flag = 0;
+				pop();
+				flag--;
 			}
 			else if( top != -1 && precedence(stack[top], ch) == 1)
 			{
