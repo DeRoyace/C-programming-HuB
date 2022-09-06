@@ -48,6 +48,42 @@ void insert_pos(int val, int pos)
 	p->next = n;
 }
 
+void delete_first()
+{
+	NODE *p = head;
+	head = p->next;
+	p->next = NULL;
+}
+
+void delete_last()
+{
+	NODE *p1 = head, *p2 = p1->next;
+	while( p2->next != NULL)
+	{
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+	p1 -> next = NULL;
+}
+
+void delete_pos(int pos)
+{
+	int i;
+	NODE *p1 = head;
+	if(pos == 1)
+	{
+		delete_first();
+		return;
+	}
+	for(i=1; i<pos-1; i++)
+		p1 = p1->next;
+	NODE *p2 = p1->next;
+	if(p2->next != NULL)
+		p1->next = p2->next;
+	else
+		p1->next = NULL;
+}
+
 void display()
 {
 	NODE *p = head;
@@ -80,8 +116,9 @@ void choice()
 	else
 	{
 		printf("\nA: Insertion:");
-		printf("\nB: Display");
-		printf("\nC: Exit");
+		printf("\nB: Deletion:");
+		printf("\nC: Display");
+		printf("\nD: Exit");
 		printf("\nEnter your choice: ");
 		scanf("%c", &ch);
 		switch(ch)
@@ -117,10 +154,38 @@ void choice()
 				break;
 
 			case 'B':
-				display();
+				printf("\nDeletion:");
+				printf("\n	1: At beginning");
+				printf("\n	2: At a given position");
+				printf("\n	3: At the End");
+				printf("\nEnter your option: ");
+				scanf("%d", &opt);
+				switch(opt)
+				{
+					case 1:
+						delete_first(val);
+						break;
+
+					case 2:
+						printf("\nEnter position at which element to be deleted: ");
+						scanf("%d", &pos);
+						delete_pos(pos);
+						break;
+
+					case 3:
+						delete_last();
+						break;
+
+					default:
+						printf("\nInvalid Choice");
+				}
 				break;
 
 			case 'C':
+				display();
+				break;
+
+			case 'D':
 				exit(1);
 
 			default:
