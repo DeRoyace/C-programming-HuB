@@ -1,6 +1,8 @@
 // implementing Simply Linked List:
+// Using integers as node values
 #include<stdio.h>
 #include<stdlib.h>
+#include<ctype.h>
 
 typedef struct List
 {
@@ -48,40 +50,47 @@ void insert_pos(int val, int pos)
 	p->next = n;
 }
 
-void delete_first()
+int delete_first()
 {
 	NODE *p = head;
+	int k = p->key;
 	head = p->next;
 	p->next = NULL;
+	free(p);
+	return k;
 }
 
-void delete_last()
+int delete_last()
 {
-	NODE *p1 = head, *p2 = p1->next;
-	while( p2->next != NULL)
-	{
-		p1 = p1->next;
-		p2 = p2->next;
-	}
-	p1 -> next = NULL;
+	int k;
+	NODE *p = head;
+	while( p->next->next != NULL)
+		p = p->next;
+	k = p->next->key;
+	free(p->next);
+	p -> next = NULL;
+	return k;
 }
 
-void delete_pos(int pos)
+int delete_pos(int pos)
 {
-	int i;
-	NODE *p1 = head;
+	int i, k;
+	NODE *p1 = head, *p2;
 	if(pos == 1)
 	{
-		delete_first();
-		return;
+		k = delete_first();
 	}
-	for(i=1; i<pos-1; i++)
-		p1 = p1->next;
-	NODE *p2 = p1->next;
-	if(p2->next != NULL)
-		p1->next = p2->next;
 	else
-		p1->next = NULL;
+	{
+		for(i=1; i<pos-1; i++)
+			p1 = p1->next;
+		p2 = p1->next;
+		p1->next = p2->next;
+		p2->next = NULL;
+		k = p2->key;
+		free(p2);
+	}
+	return k;
 }
 
 void display()
@@ -121,6 +130,7 @@ void choice()
 		printf("\nD: Exit");
 		printf("\nEnter your choice: ");
 		scanf("%c", &ch);
+		ch = toupper(ch);
 		switch(ch)
 		{
 			case 'A':
@@ -163,22 +173,23 @@ void choice()
 				switch(opt)
 				{
 					case 1:
-						delete_first(val);
+						val = delete_first(val);
 						break;
 
 					case 2:
 						printf("\nEnter position at which element to be deleted: ");
 						scanf("%d", &pos);
-						delete_pos(pos);
+						val = delete_pos(pos);
 						break;
 
 					case 3:
-						delete_last();
+						val = delete_last();
 						break;
 
 					default:
 						printf("\nInvalid Choice");
 				}
+				printf("\nDeleted element is %d", val);
 				break;
 
 			case 'C':
