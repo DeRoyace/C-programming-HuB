@@ -24,11 +24,10 @@ int pop()
 		printf("\nStack is empty");
 		return -1;
 	}
-	int val = 0;
 	NODE *n = head;
+	int val = head->key;
 	head = n->next;
 	n->next = NULL;
-	val = n->key;
 	free(n);
 	return val;
 }
@@ -41,6 +40,12 @@ int peep()
 		return -1;
 	}
 	return head->key;
+}
+
+void clearStack()
+{
+	while(head != NULL)
+		pop();
 }
 
 void display()
@@ -66,8 +71,8 @@ void choice() // menu driven function for stack operations
 	printf("\n1: PUSH Elements");
 	printf("\n2: POP element");
 	printf("\n3: PEEP element");
-	printf("\n4: CLEAR Stack");
-	printf("\n5: DISPLAY Stack elements");
+	printf("\n4: DISPLAY Stack elements");
+	printf("\n5: CLEAR Stack");
 	printf("\n6: TERMINATE the program");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
@@ -89,12 +94,12 @@ void choice() // menu driven function for stack operations
 				printf("\nTopmost element is %d", peep());
 			break;
 			
-			case 5:
+			case 4:
 			display();
 			break;
 			
-			case 4:
-			head = NULL;
+			case 5:
+			clearStack();
 			printf("\nStack is empty now.");
 			break;
 
@@ -103,7 +108,6 @@ void choice() // menu driven function for stack operations
 
 			default:
 			printf("\nInvalid chhoice\nEnter again...");
-			choice();
 	}
 } // end of choice()
 
