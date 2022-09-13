@@ -1,78 +1,82 @@
-// implementing Simply Linked List:
+// implementing Simply Linked List (SLL)
 // Using integers as node values
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
+// Creating a structure below for making Nodes of a List:
+// Each node consists of two elements:	1) Data	  2) Address
 typedef struct List
 {
-	int key;
-	struct List *next;
-} NODE;
+	int key; 			// holds the data of the node
+	struct List *next; 	// stores the address of next node in a sequence
+} NODE; 				// name of the structure
 
-NODE *head = NULL;
+NODE *head = NULL;	// creating a head pointer that initially points to NULL
+// The head pointer is used to point to the first node of the list.
 
-void insert(int val)
+void insert_last(int val)	// function to insert new node at the end of the lsit
 {
-	NODE *n = (NODE *)malloc(sizeof(NODE));
+	NODE *n = (NODE *)malloc(sizeof(NODE)); // creating a pointer variable for new node
 	NODE *p = head;
-	n->key = val;
-	n->next = NULL;
-	if (!head) // head == NULL
+	n->key = val;	// assigning value/ data to the newly created node
+	n->next = NULL;	// assigning the pointing address of the node as NULL
+	if (!head)		// head == NULL
 	{
-		head = n;
+		head = n;	// head now points to the first node
 		return;
 	}
-	while (p->next != NULL)
+	while (p->next != NULL)	// traversing the list until we reach the second last node
 		p = p->next;
-	p->next = n;
+	p->next = n;	// making the last node point to the address of newly created node
 }
 
-void insert_first(int val)
+void insert_first(int val)	// function to insert node at the beginning
 {
 	NODE *n = (NODE *)malloc(sizeof(NODE));
 	n->key = val;
-	n->next = head;
-	head = n;
+	n->next = head;	// making the new node point to the first node
+	head = n; 		// now the new node becomes the first node of the list
 }
 
-void insert_pos(int val, int pos)
+void insert_pos(int val, int pos)	// inserts node at a given position
 {
 	NODE *n = (NODE *)malloc(sizeof(NODE));
-	NODE *p = head;
+	NODE *p = head;	// temporary pointer variable, used to traverse all the nodes of the lsit
 	n->key = val;
 	int i;
 	for (i = 1; i < pos - 1; i++)
 	{
 		p = p->next;
 	}
-	n->next = p->next;
-	p->next = n;
+	n->next = p->next;	// making the newly inserted node point to the next node
+	p->next = n;		// makingthe previous node of the newly inserted node point to the new node
 }
 
-int delete_first()
+int delete_first()	// deletes the first node from the lsit
 {
-	NODE *p = head;
-	int k = p->key;
-	head = p->next;
-	p->next = NULL;
-	free(p);
-	return k;
+	NODE *p = head;	// points to first node of the list
+	int k = p->key;	// 'k' holds the value of the first node to be deleted
+	head = p->next;	// making the head pointer point to second node
+					// now the second node becomes the first node of the list
+	p->next = NULL;	// breaking the link of the node from other nodes
+	free(p);		// dynamically deallocating the deleted node from memory space
+	return k;		// returns the value of deleted node
 }
 
-int delete_last()
+int delete_last()	// deletes the last node
 {
 	int k;
 	NODE *p = head;
 	while (p->next->next != NULL)
-		p = p->next;
-	k = p->next->key;
-	free(p->next);
-	p->next = NULL;
+		p = p->next;	// traversing the list until we reach the second last node
+	// Now we have,		p : second last node;	p->next : last node
+	k = p->next->key;	// storing the value of last node
+	free(p->next);	// deallocating the last node
+	p->next = NULL;	// making the second last node point to nothing 
 	return k;
 }
 
-int delete_pos(int pos)
+int delete_pos(int pos)	// deletes node from the list at a given positin
 {
 	int i, k;
 	NODE *p1 = head, *p2;
@@ -83,9 +87,9 @@ int delete_pos(int pos)
 	else
 	{
 		for (i = 1; i < pos - 1; i++)
-			p1 = p1->next;
-		p2 = p1->next;
-		p1->next = p2->next;
+			p1 = p1->next;	// travesing upto the node before the given position
+		p2 = p1->next;	// p2 now holds the node to be deleted
+		p1->next = p2->next;	// p1 now points to the next node of p2
 		p2->next = NULL;
 		k = p2->key;
 		free(p2);
@@ -93,9 +97,9 @@ int delete_pos(int pos)
 	return k;
 }
 
-void display()
+void display()	// function to display the values of all the nodes of the list
 {
-	if(head == NULL)
+	if(!head)
 	{
 		printf("List is Empty");
 		return;
@@ -104,13 +108,13 @@ void display()
 	printf("\nThe elements of the list are: ");
 	while (p->next != NULL)
 	{
-		printf("%d  ", p->key);
+		printf("%d  ", p->key);	// prints all the node values upto second last node
 		p = p->next;
 	}
-	printf("%d\n", p->key);
+	printf("%d\n", p->key);	// prints the value of last node
 }
 
-void choice()
+void choice()	// menu choice function to perform all operations on the SLL through user choice
 {
 	int ch;
 	int opt, val, pos;
@@ -120,7 +124,6 @@ void choice()
 	printf("\n4: Exit");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
-	// ch = toupper(ch);
 	switch (ch)
 	{
 	case 1:
@@ -145,7 +148,7 @@ void choice()
 			break;
 
 		case 3:
-			insert(val);
+			insert_last(val);
 			break;
 
 		default:
@@ -160,7 +163,7 @@ void choice()
 		printf("\n	3: At the End");
 		printf("\nEnter your option: ");
 		scanf("%d", &opt);
-		if(head == NULL)
+		if(!head)
 		{
 			printf("List is empty");
 			return;
@@ -197,7 +200,7 @@ void choice()
 	default:
 		printf("\nInvalid choice.\nEnter again...");
 	}
-}
+}	// end of choice()
 
 int main()
 {
