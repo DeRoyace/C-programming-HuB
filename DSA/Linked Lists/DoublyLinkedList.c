@@ -15,7 +15,8 @@ void insert_first(int val)
 	n -> key = val;
 	n -> prev = NULL;
 	n -> next = head;
-	head -> prev = n;
+	if(head)
+		head -> prev = n;
 	head = n;
 }
 
@@ -54,7 +55,8 @@ int delete_first()
 	NODE *p = head;
 	int val = head->key;
 	head = p->next;
-	p->next->prev = NULL;
+	if(head)
+		head->prev = NULL;
 	p->next = NULL;
 	free(p);
 	return val;
@@ -66,10 +68,10 @@ int delete_last()
 	int val;
 	while(p->next->next)
 		p = p->next;
-	p->next->prev = NULL;
-	p->next = NULL;
 	val = p->next->key;
-	free(p);
+	p->next->prev = NULL;
+	free(p->next);
+	p->next = NULL;
 	return val;
 }
 
