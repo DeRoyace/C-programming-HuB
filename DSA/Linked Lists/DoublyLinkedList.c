@@ -66,6 +66,10 @@ int delete_last()
 {
 	NODE *p = head;
 	int val;
+	if(p->next == NULL)
+	{
+		return delete_first();
+	}
 	while(p->next->next)
 		p = p->next;
 	val = p->next->key;
