@@ -67,6 +67,10 @@ int delete_last()	// deletes the last node
 {
 	int k;
 	NODE *p = head;
+	if(p->next == NULL)
+	{
+		return delete_first();
+	}
 	while (p->next->next != NULL)
 		p = p->next;	// traversing the list until we reach the second last node
 	// Now we have,		p : second last node;	p->next : last node
@@ -171,7 +175,7 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 		switch (opt)
 		{
 		case 1:
-			val = delete_first(val);
+			val = delete_first();
 			break;
 
 		case 2:
