@@ -109,13 +109,37 @@ void display()	// function to display the values of all the nodes of the list
 		return;
 	}
 	NODE *p = head;
-	printf("\nThe elements of the list are: ");
 	while (p->next != NULL)
 	{
 		printf("%d  ", p->key);	// prints all the node values upto second last node
 		p = p->next;
 	}
 	printf("%d\n", p->key);	// prints the value of last node
+}
+
+void reverseList()	// function to reverse the list
+{
+	if(!head)
+	{
+		printf("\nList is empty");
+		return;
+	}
+	printf("\nOriginal list:  ");
+	display();
+	NODE *x, *y, *z;
+	x = head;	// traverses all the nodes of the list
+	y = NULL;	// holds the address of the node just before the current node pointed by x
+				// z is used for reversal purpose
+	while(x)
+	{
+		z = y;
+		y = x;
+		x = x->next;
+		y->next = z;
+	}
+	head = y;
+	printf("\nList after reversal:  ");
+	display();
 }
 
 void choice()	// menu choice function to perform all operations on the SLL through user choice
@@ -125,7 +149,8 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 	printf("1: Insertion:");
 	printf("\n2: Deletion:");
 	printf("\n3: Display");
-	printf("\n4: Exit");
+	printf("\n4: Reverse the list order");
+	printf("\n5: Exit");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch (ch)
@@ -195,10 +220,15 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 		break;
 
 	case 3:
+		printf("\nList elements are:  ");
 		display();
 		break;
 
 	case 4:
+		reverseList();
+		break;
+
+	case 5:
 		exit(1);
 
 	default:
