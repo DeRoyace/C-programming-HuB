@@ -54,6 +54,11 @@ void insert_pos(int val, int pos)	// inserts node at a given position
 	NODE *n = (NODE *)malloc(sizeof(NODE));
 	NODE *p = head;	// temporary pointer variable, used to traverse all the nodes of the lsit
 	n->key = val;
+	if(pos == 1)
+	{
+		insert_first(val);
+		return;
+	}
 	int i;
 	for (i = 1; i < pos - 1; i++)
 	{

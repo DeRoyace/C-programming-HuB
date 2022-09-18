@@ -42,6 +42,11 @@ void insert_pos(int pos, int val)
 	int i;
 	NODE *n = (NODE *) malloc(sizeof(NODE)), *p = head;
 	n -> key = val;
+	if(pos == 1)
+	{
+		insert_first(val);
+		return;
+	}
 	for(i = 1; i < pos-1; i++)
 		p = p->next;
 	n -> next = p->next;
