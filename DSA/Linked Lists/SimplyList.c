@@ -142,6 +142,24 @@ void reverseList()	// function to reverse the list
 	display();
 }
 
+void sort()	// sorts the values of each nodes of the list using selection sorting technique
+{
+	NODE *i = head, *j;
+	int temp;
+	for( ;i->next ; i = i->next)
+	{
+		for(j = i->next; j; j = j->next)
+		{
+			if(j->key < i->key)
+			{
+				temp = i->key;
+				i->key = j->key;
+				j->key = temp;
+			}
+		}
+	}
+}
+
 void choice()	// menu choice function to perform all operations on the SLL through user choice
 {
 	int ch;
@@ -150,7 +168,8 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 	printf("\n2: Deletion:");
 	printf("\n3: Display");
 	printf("\n4: Reverse the list order");
-	printf("\n5: Exit");
+	printf("\n5: Sort");
+	printf("\n6: Exit");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch (ch)
@@ -227,8 +246,12 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 	case 4:
 		reverseList();
 		break;
-
+	
 	case 5:
+		sort();
+		break;
+	
+	case 6:
 		exit(1);
 
 	default:
