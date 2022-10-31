@@ -1,8 +1,8 @@
-// implementing Circular Linked List (SLL)
+// implementing Circular Linked List
 // Using integers as node values
 #include <stdio.h>
 #include <stdlib.h>
-
+ 
 // Creating a structure below for making Nodes of a List:
 // Each node consists of two elements:	1) Data	  2) Address
 typedef struct List
