@@ -96,10 +96,28 @@ void search(int val)
 		printf("\nElement not found");
 }
 
+int totalNodes(NODE *r)
+{
+	if(r)
+		return 1 + totalNodes(r->left) + totalNodes(r->right);
+	else
+		return 0;
+}
+
+int countleafNodes(NODE *r)
+{
+	if(!r)
+	return 0;
+	if( !(r->right) && !(r->left) )
+		return 1;
+	else 
+		 return countleafNodes(r->left) + countleafNodes(r->right);
+}
+
 void choice()
 {
 	int ch, val;
-	printf("\n1: Insert\n2: Display\n3: Search element\n4: Exit\nEnter your choice: ");
+	printf("\n1: Insert\n2: Display\n3: Search element\n4: Count Nodes\n5: Leaf nodes\n6: Exit\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch(ch)
 	{
@@ -138,6 +156,14 @@ void choice()
 		break;
 
 		case 4:
+		printf("\nTotal number of nodes: %d", totalNodes(root) );
+		break;
+		
+		case 5:
+		printf("\nTotal number of leaf nodes: %d", countleafNodes(root) );
+		break;
+		
+		case 6:
 		exit(1);
 
 		default:
