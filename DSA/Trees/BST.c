@@ -94,10 +94,20 @@ void search(int val)
 		printf("\nElement not found");
 }
 
+void sort(NODE *r)  // displaying the tree elements in descending order
+{
+	if(r)
+	{
+		sort(r->right);
+		printf("%d  ", r->key);
+		sort(r->left);
+	}
+}
+
 void choice()
 {
 	int ch, val;
-	printf("\n1: Insert\n2: Display\n3: Search element\n4: Exit\nEnter your choice: ");
+	printf("\n1: Insert\n2: Display\n3: Search element\n4: Sort (descending)\n5: Exit\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch(ch)
 	{
@@ -136,6 +146,11 @@ void choice()
 		break;
 
 		case 4:
+		printf("\nSorted elements: ");
+		sort(root);
+		break;
+
+		case 5:
 		exit(1);
 
 		default:
