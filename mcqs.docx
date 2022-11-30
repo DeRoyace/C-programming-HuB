@@ -1,10 +1,8 @@
-[9:08 pm, 16/11/2021] Snahasis Sir: 
-Which of the following operator(s) cannot be overloaded?
+﻿Which of the following operator(s) cannot be overloaded?
 . (Member Access or Dot operator)
 ?: (Ternary or Conditional Operator )
 :: (Scope Resolution Operator)
 Ans All of the above
-Ans: 
 
 Which of the following cannot be passed to a function in C++?
 Constant
