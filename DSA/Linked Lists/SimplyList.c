@@ -160,6 +160,19 @@ void sort()	// sorts the values of each nodes of the list using selection sortin
 	}
 }
 
+int findMax()
+{
+	NODE *p = head;
+	int max = p->key;
+	p = p->next;
+	for( ; p; p = p->next)
+	{
+		if(max < p->key)
+			max = p->key;
+	}
+	return max;
+}
+
 void choice()	// menu choice function to perform all operations on the SLL through user choice
 {
 	int ch;
@@ -169,7 +182,8 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 	printf("\n3: Display");
 	printf("\n4: Reverse the list order");
 	printf("\n5: Sort");
-	printf("\n6: Exit");
+	printf("\n6: Largest element");
+	printf("\n7: Exit");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch (ch)
@@ -252,6 +266,10 @@ void choice()	// menu choice function to perform all operations on the SLL throu
 		break;
 	
 	case 6:
+		printf("\nLargest element in the list is %d", findMax());
+		break;
+	
+	case 7:
 		exit(1);
 
 	default:
