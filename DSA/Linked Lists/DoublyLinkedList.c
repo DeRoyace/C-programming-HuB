@@ -1,3 +1,5 @@
+// Implementing Doubly Linked List using head pointer
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -118,6 +120,31 @@ void display()
 	printf("%d\n", p->key);
 }
 
+void reverseList()	// function to reverse the list
+{
+	if(!head)
+	{
+		printf("\nList is empty");
+		return;
+	}
+	printf("\nOriginal list:  ");
+	display();
+	NODE *x, *y, *z;
+	x = head;	// traverses all the nodes of the list
+	y = NULL;	// holds the address of the node just before the current node pointed by x
+				// z is used for reversal purpose
+	while(x)
+	{
+		z = y;
+		y = x;
+		x = x->next;
+		y->next = z;
+	}
+	head = y;
+	printf("\nList after reversal:  ");
+	display();
+}
+
 void choice()
 {
 	int ch;
@@ -125,7 +152,8 @@ void choice()
 	printf("1: Insertion:");
 	printf("\n2: Deletion:");
 	printf("\n3: Display");
-	printf("\n4: Exit");
+	printf("\n4: Reverse list display");
+	printf("\n5: Exit");
 	printf("\nEnter your choice: ");
 	scanf("%d", &ch);
 	// ch = toupper(ch);
@@ -200,6 +228,10 @@ void choice()
 		break;
 
 	case 4:
+		reverseList();
+		break;
+
+	case 5:
 		exit(1);
 
 	default:
