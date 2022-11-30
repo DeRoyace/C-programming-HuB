@@ -26,7 +26,7 @@ void create(int val)
 	while(trav)
 	{
 		track = trav;
-        printf("\nWhich side of the node you want to insert? [0-left, 1-right] enter (0/1): ");
+        printf("\nWhich side of the node do you want to insert? [0-left, 1-right] enter (0/1): ");
         scanf("%d", &side);
 		if(side)
 			trav = trav->right;
@@ -114,10 +114,20 @@ int countleafNodes(NODE *r)
 		 return countleafNodes(r->left) + countleafNodes(r->right);
 }
 
+int countNonLeafNodes(NODE *r)
+{
+	if(!r)
+		return 0;
+	if( r->left || r->right )
+		return 1 + countNonLeafNodes(r->left) + countNonLeafNodes(r->right);
+	else 
+		return 0;
+}
+
 void choice()
 {
 	int ch, val;
-	printf("\n1: Insert\n2: Display\n3: Search element\n4: Count Nodes\n5: Leaf nodes\n6: Exit\nEnter your choice: ");
+	printf("\n1: Insert\n2: Display\n3: Search element\n4: Count Nodes\n5: Count Leaf nodes\n6: Count Non-leaf nodes\n7: Exit\nEnter your choice: ");
 	scanf("%d", &ch);
 	switch(ch)
 	{
@@ -133,14 +143,17 @@ void choice()
 		switch(ch)
 		{
 			case 1:
+			printf("\nPreorder traversal: ");
 			preorder(root);
 			break;
 
 			case 2:
+			printf("\nInorder traversal: ");
 			inorder(root);
 			break;
 
 			case 3:
+			printf("\nPostorder traversal: ");
 			postorder(root);
 			break;
 
@@ -164,6 +177,10 @@ void choice()
 		break;
 		
 		case 6:
+		printf("\nTotal number of Non-leaf nodes: %d", countNonLeafNodes(root) );
+		break;
+
+		case 7:
 		exit(1);
 
 		default:
